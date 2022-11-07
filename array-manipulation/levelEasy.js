@@ -127,7 +127,7 @@ console.log(
     : "no arithmetic progression"
 );
 
-// Q9. A subarray is a part of an array including one or more contiguous/adjacent elements.
+// Q9. Largest Contiguous Sum: A subarray is a part of an array including one or more contiguous/adjacent elements.
 const arr1 = [4, -6, 2, 5];
 
 let subArr1 = arr1[0],
@@ -179,7 +179,7 @@ maxSubArraySum(a, n);
 
 //  Q10. Given a number n, find the nth row of pascal’s triangle.
 
-const pascalRow = 4;
+const pascalRow = 4; // n
 let prev = 1;
 
 console.log(prev);
