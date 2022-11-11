@@ -28,4 +28,47 @@ for (let i = 0; i < matrix.length; i++) {
   }
 }
 
-console.table("Updated matrix : ", matrix);
+//  Q2. Matrix Rotation : Given a matrix, rotate the matrix 90 degrees clockwise.
+
+const matrix = [
+  [1, 2, 7],
+  [3, 4, 8],
+  [5, 6, 9],
+];
+console.table("original matrix : ", matrix.length, matrix, matrix[0].length);
+
+// transpose of original matrix
+for (let i = 0; i < matrix.length; i++) {
+  for (let j = 0; j < i; j++) {
+    [matrix[i][j], matrix[j][i]] = [matrix[j][i], matrix[i][j]];
+  }
+}
+
+// clockwise - rotate row
+for (let i = 0; i < matrix.length; i++) {
+  let k = matrix[0].length - 1;
+  for (let j = 0; j < k; j++) {
+    [matrix[i][j], matrix[i][k]] = [matrix[i][k], matrix[i][j]];
+    k--;
+  }
+}
+
+// anticlockwise - rotate column
+for (let i = 0; i < matrix.length; i++) {
+  let k = matrix[0].length - 1;
+  for (let j = 0; j < k; j++) {
+    [matrix[j][i], matrix[k][i]] = [matrix[k][i], matrix[j][i]];
+    k--;
+  }
+}
+
+// Q3. Primes upto N
+
+// Q4. Square root of an integer
+
+// Q5. Two sum - Given an array A and an integer target, find the indices of the two numbers in the array whose sum is equal to the given target.
+
+// Q6. Kth Largest Element
+
+// Q7. Find the angle between hour hand and minute hand of a clock
+// https://dev.to/alisabaj/finding-the-angle-between-the-hands-of-a-clock-2lg1
