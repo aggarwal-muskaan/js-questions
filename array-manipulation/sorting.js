@@ -1,5 +1,11 @@
 const unsortedArr = [11, 23, 5, 6, 12, 100, 1, 5];
 
+const swap = (arr, i, j) => {
+  let temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
+};
+
 /**
  Various JavaScript engines implement different sort algorithms: 
  V8: Quicksort or Insertion Sort (for smaller arrays) 
@@ -73,12 +79,6 @@ console.log(sortUsingMergeAlgo);
 
 // Q5. Quick sort
 
-const swap = (arr, i, j) => {
-  let temp = arr[i];
-  arr[i] = arr[j];
-  arr[j] = temp;
-};
-
 const partition = (arr, start, end) => {
   let count = 0;
   let pivot = arr[start];
@@ -116,6 +116,18 @@ quickSort(sortUsingQuickAlgo, 0, sortUsingQuickAlgo.length - 1);
 console.log(sortUsingQuickAlgo);
 
 // Q6. Selection sort
+
+const arr = [6, -90, 87, 0, -1, 5, 0, 0, 0, 34, 90, -1, 20];
+
+for (let i = 0; i < arr.length - 1; i++) {
+  let min = i;
+  for (let j = i + 1; j < arr.length; j++) {
+    if (arr[j] < arr[min]) min = j;
+  }
+  swap(arr, min, i);
+}
+
+console.log(arr);
 
 // Q7. Bucket sort
 
