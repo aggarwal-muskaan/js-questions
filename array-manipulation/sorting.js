@@ -129,6 +129,26 @@ for (let i = 0; i < arr.length - 1; i++) {
 
 console.log(arr);
 
+// Variation - Stable Selection Sort
+
+const arr1 = [4, 6, 3, 4, 3, 1];
+
+for (let i = 0; i < arr1.length - 1; i++) {
+  let min = i;
+  for (let j = i + 1; j < arr1.length; j++) {
+    if (arr1[j] < arr1[min]) min = j;
+  }
+
+  let minValue = arr1[min];
+  while (min > i) {
+    arr1[min] = arr1[min - 1];
+    min--;
+  }
+  arr1[i] = minValue;
+}
+
+console.log(arr1);
+
 // Q7. Bucket sort
 
 // Q6. Binary Search
