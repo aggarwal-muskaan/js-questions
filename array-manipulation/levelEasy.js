@@ -21,7 +21,7 @@ console.log(total);
 const initial = [1, -2, 3, 4, -6];
 let newArr = [];
 let index = -1;
-const arr = cumulative.reduce((prev, curr) => {
+const arr = initial.reduce((prev, curr) => {
   const sum = prev + curr;
   if (sum > 0) newArr[++index] = sum;
   return sum;
