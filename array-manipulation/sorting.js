@@ -93,9 +93,7 @@ function bubbleSort(arr) {
 const sortUsingBubble = unsortedArr;
 bubbleSort(sortUsingBubble);
 
-// Q4. Heap sort
-
-// Q5. Quick sort
+// Q4. Quick sort
 
 const partition = (arr, start, end) => {
   let count = 0;
@@ -133,7 +131,7 @@ const sortUsingQuickAlgo = unsortedArr;
 quickSort(sortUsingQuickAlgo, 0, sortUsingQuickAlgo.length - 1);
 console.log(sortUsingQuickAlgo);
 
-// Q6. Selection sort
+// Q5. Selection sort
 
 const arr = [6, -90, 87, 0, -1, 5, 0, 0, 0, 34, 90, -1, 20];
 
@@ -167,6 +165,21 @@ for (let i = 0; i < arr1.length - 1; i++) {
 
 console.log(arr1);
 
-// Q7. Bucket sort
-
 // Q6. Binary Search
+const sortedArray = [2, 4, 5, 6, 6, 9, 13, 19];
+const foundAtIndex = binarySearch(sortedArray, 9, 0, sortedArray.length - 1);
+
+if (foundAtIndex !== -1)
+  console.log(`Element found at position - ${foundAtIndex}`);
+else console.log("Element not found!");
+
+function binarySearch(arr, el, start, end) {
+  if (end >= start) {
+    const mid = start + Math.floor((end - start) / 2);
+
+    if (arr[mid] === el) return mid;
+    else if (arr[mid] > el) return binarySearch(arr, el, start, mid - 1);
+    else if (arr[mid] < el) return binarySearch(arr, el, mid + 1, end);
+  }
+  return -1;
+}
