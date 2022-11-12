@@ -75,6 +75,24 @@ console.log(sortUsingMergeAlgo);
 
 // Q3. Bubble sort
 
+function bubbleSort(arr) {
+  for (let i = 0; i < arr.length - 1; i++) {
+    let isSwapped = false;
+    for (let j = 0; j < arr.length - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        swap(arr, j + 1, j);
+        isSwapped = true;
+      }
+    }
+    // If no two elements were swapped -> break the loop
+    // no iteration needed -> array is sorted
+    if (!isSwapped) break;
+  }
+}
+
+const sortUsingBubble = unsortedArr;
+bubbleSort(sortUsingBubble);
+
 // Q4. Heap sort
 
 // Q5. Quick sort
