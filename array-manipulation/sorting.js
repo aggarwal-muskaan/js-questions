@@ -183,3 +183,17 @@ function binarySearch(arr, el, start, end) {
   }
   return -1;
 }
+
+function iterativeBinarySearch(arr, el) {
+  let start = 0,
+    end = arr.length - 1;
+
+  while (start <= end) {
+    const mid = start + Math.floor((end - start) / 2);
+
+    if (arr[mid] === el) return mid;
+    else if (arr[mid] > el) end = mid - 1;
+    else if (arr[mid] < el) start = mid + 1;
+  }
+  return -1;
+}
