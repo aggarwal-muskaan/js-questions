@@ -217,7 +217,7 @@ if (leftmost !== -1 && rightmost !== -1)
   console.log(`Number of occurrences - ${rightmost - leftmost + 1}`);
 
 function firstOccurence(arr, el) {
-  let start = arr[0],
+  let start = 0,
     end = arr.length - 1;
   let index = -1;
   while (start <= end) {
@@ -233,7 +233,7 @@ function firstOccurence(arr, el) {
 }
 
 function lastOccurence(arr, el) {
-  let start = arr[0],
+  let start = 0,
     end = arr.length - 1;
   let index = -1;
   while (start <= end) {
