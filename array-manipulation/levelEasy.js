@@ -197,3 +197,53 @@ for (let i = 0; i < pascalRow; i++) {
 }
 
 console.log(sumAll);
+
+//  Q12. Find first and last position of an element in sorted array.
+
+const sortedArray = [2, 4, 5, 6, 6, 6, 6, 7, 8];
+const element = 6;
+// output should be -> first:3, last:5
+
+const leftmost = firstOccurence(sortedArray, element);
+leftmost === -1
+  ? console.log("Not found")
+  : console.log(`leftmost index - ${leftmost}`);
+const rightmost = lastOccurence(sortedArray, element);
+rightmost === -1
+  ? console.log("Not found")
+  : console.log(`rightmost index - ${rightmost}`);
+
+if (leftmost !== -1 && rightmost !== -1)
+  console.log(`Number of occurrences - ${rightmost - leftmost + 1}`);
+
+function firstOccurence(arr, el) {
+  let start = arr[0],
+    end = arr.length - 1;
+  let index = -1;
+  while (start <= end) {
+    let mid = start + Math.floor((end - start) / 2);
+
+    if (arr[mid] === el) {
+      index = mid;
+      end = mid - 1;
+    } else if (arr[mid] > el) end = mid - 1;
+    else if (arr[mid] < el) start = mid + 1;
+  }
+  return index;
+}
+
+function lastOccurence(arr, el) {
+  let start = arr[0],
+    end = arr.length - 1;
+  let index = -1;
+  while (start <= end) {
+    let mid = start + Math.floor((end - start) / 2);
+
+    if (arr[mid] === el) {
+      index = mid;
+      start = mid + 1;
+    } else if (arr[mid] > el) end = mid - 1;
+    else if (arr[mid] < el) start = mid + 1;
+  }
+  return index;
+}
