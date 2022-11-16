@@ -164,36 +164,3 @@ for (let i = 0; i < arr1.length - 1; i++) {
 }
 
 console.log(arr1);
-
-// Q6. Binary Search
-const sortedArray = [2, 4, 5, 6, 6, 9, 13, 19];
-const foundAtIndex = binarySearch(sortedArray, 9, 0, sortedArray.length - 1);
-
-if (foundAtIndex !== -1)
-  console.log(`Element found at position - ${foundAtIndex}`);
-else console.log("Element not found!");
-
-function binarySearch(arr, el, start, end) {
-  if (end >= start) {
-    const mid = start + Math.floor((end - start) / 2);
-
-    if (arr[mid] === el) return mid;
-    else if (arr[mid] > el) return binarySearch(arr, el, start, mid - 1);
-    else if (arr[mid] < el) return binarySearch(arr, el, mid + 1, end);
-  }
-  return -1;
-}
-
-function iterativeBinarySearch(arr, el) {
-  let start = 0,
-    end = arr.length - 1;
-
-  while (start <= end) {
-    const mid = start + Math.floor((end - start) / 2);
-
-    if (arr[mid] === el) return mid;
-    else if (arr[mid] > el) end = mid - 1;
-    else if (arr[mid] < el) start = mid + 1;
-  }
-  return -1;
-}

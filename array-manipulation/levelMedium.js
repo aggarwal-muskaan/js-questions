@@ -64,7 +64,7 @@ for (let i = 0; i < matrix.length; i++) {
 
 // Q3. Primes upto N
 
-// Q4. Square root of an integer
+// Q4.
 
 // Q5. Two sum - Given an array A and an integer target, find the indices of the two numbers in the array whose sum is equal to the given target.
 
@@ -72,20 +72,3 @@ for (let i = 0; i < matrix.length; i++) {
 
 // Q7. Find the angle between hour hand and minute hand of a clock
 // https://dev.to/alisabaj/finding-the-angle-between-the-hands-of-a-clock-2lg1
-
-// Q8. Find peak (i key) in mountain array
-// array[i-1] < arr[i] > arr[i+1] => ascending order, peak, descending order
-const mountainArray = [3, 7, 8, 9, 10, 11, 11, 11, 4, 2, 1, 0, -1];
-// output = 11
-
-let start = 0,
-  end = mountainArray.length - 1,
-  mid = start + Math.floor((end - start) / 2);
-
-while (start < end) {
-  if (mountainArray[mid] < mountainArray[mid + 1]) start = mid + 1;
-  else end = mid;
-
-  mid = start + Math.floor((end - start) / 2);
-}
-console.log(`Peak is ${mountainArray[mid]} with index ${mid}`);
