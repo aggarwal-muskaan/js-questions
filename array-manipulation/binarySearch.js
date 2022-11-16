@@ -83,7 +83,7 @@ function lastOccurence(arr, el) {
 // Q3. Find peak (i key) in mountain array
 // array[i-1] < arr[i] > arr[i+1] => ascending order, peak, descending order
 const mountainArray = [3, 7, 8, 9, 10, 11, 11, 11, 4, 2, 1, 0, -1];
-// output = 11
+// output = 11 = arr[5]
 
 let start = 0,
   end = mountainArray.length - 1,
@@ -98,5 +98,64 @@ while (start < end) {
 console.log(`Peak is ${mountainArray[mid]} with index ${mid}`);
 
 // Q4. Find pivot in rotated array
+//  array[i-1]>=array[i]<=array[i+1]
+const rotatedArray = [6, 7, 8, 9, 1, 2, 4]; // array[4] = pivot = 1
+
+function findPivot(rotatedArray) {
+  let start = 0,
+    end = rotatedArray.length - 1,
+    mid = start + Math.floor((end - start) / 2);
+
+  while (start < end) {
+    if (rotatedArray[mid] < rotatedArray[0]) start = mid + 1;
+    else end = mid;
+
+    mid = start + Math.floor((end - start) / 2);
+  }
+  //   here, start=end
+  console.log(`Pivot is ${rotatedArray[mid]} with index ${mid}`);
+}
+
+findPivot(rotatedArray);
 
 // Q5. Square root of an integer
+const double = 36;
+console.log(`Square root of ${double} is ${squareRoot(double)}`);
+const integer1 = 231;
+const tempSolution = squareRoot(integer1);
+console.log(
+  `Square root of ${integer1} is ${decimalPrecision(integer1, 2, tempSolution)}`
+);
+
+function squareRoot(element) {
+  let start = 0,
+    end = element / 2,
+    ans = -1,
+    mid = element / 4;
+
+  while (start <= end) {
+    if (mid * mid === element) return mid;
+    else if (mid * mid > element) end = mid - 1;
+    else {
+      ans = mid;
+      start = mid + 1;
+    }
+
+    mid = start + Math.floor((end - start) / 2);
+  }
+
+  return ans;
+}
+
+function decimalPrecision(element, precision, wholeNum) {
+  let point = 1,
+    solution = wholeNum;
+  for (let i = 1; i <= precision; i++) {
+    point = point / 10;
+    for (let j = wholeNum; j * j <= element; j += point) {
+      console.log(solution, j, 0.05 + 0.01);
+      solution = j;
+    }
+  }
+  return solution;
+}
