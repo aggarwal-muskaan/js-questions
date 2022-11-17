@@ -131,51 +131,47 @@ console.log(
 const arr1 = [4, -6, 2, 5];
 
 let subArr1 = arr1[0],
-  maxSum = 0;
+  max = 0;
 
 for (let i = 0; i < arr1.length; i++) {
   let sum = 0;
   for (let j = i; j < arr1.length; j++) {
     sum += arr1[j];
-    if (sum > maxSum) {
-      maxSum = sum;
+    if (sum > max) {
+      max = sum;
       subArr1 = arr1.slice(i, j + 1);
     }
   }
 }
-console.log(subArr, maxSum);
+console.log(subArr1, max);
 
 /** Approach -2 with O(n) */
-function maxSubArraySum(a, size) {
-  var max_so_far = Number.MIN_VALUE,
-    max_ending_here = 0,
-    start = 0,
-    end = 0,
+function kadaneAlgo(array) {
+  let maxSum = array[0],
+    sum = 0,
+    startIndex = 0,
+    endIndex = 0,
     s = 0;
 
-  for (let i = 0; i < size; i++) {
-    max_ending_here += a[i];
-
-    if (max_so_far < max_ending_here) {
-      max_so_far = max_ending_here;
-      start = s;
-      end = i;
+  for (let i = 0; i < array.length; i++) {
+    sum += array[i];
+    if (sum > maxSum) {
+      maxSum = sum;
+      startIndex = s;
+      endIndex = i;
     }
 
-    if (max_ending_here < 0) {
-      max_ending_here = 0;
+    if (sum < 0) {
+      sum = 0;
       s = i + 1;
     }
-    console.log(max_ending_here, max_so_far, start, end, s);
   }
-  document.write("Maximum contiguous sum is " + max_so_far);
-  document.write("<br/>Starting index " + start);
-  document.write("<br/>Ending index " + end);
+  return { maxSum, startIndex, endIndex };
 }
 
-var a = [4, -6, 2, 5];
-var n = a.length;
-maxSubArraySum(a, n);
+var a = [-4, -6, -2, -5];
+const { maxSum, startIndex, endIndex } = kadaneAlgo(a);
+console.log(`Max sum is ${maxSum} from index ${startIndex} to ${endIndex}`);
 
 //  Q10. Given a number n, find the nth row of pascal’s triangle.
 
