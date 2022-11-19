@@ -71,4 +71,16 @@ for (let i = 0; i < matrix.length; i++) {
 // Q6. Kth Largest Element
 
 // Q7. Find the angle between hour hand and minute hand of a clock
-// https://dev.to/alisabaj/finding-the-angle-between-the-hands-of-a-clock-2lg1
+// Input : 8:15, output:157.5
+// Input : 12:30, output:165
+
+const givenTime = angleClock(8, 15);
+function angleClock(hours, minutes) {
+  const minAngle = 6 * minutes;
+  const hourAngle = 30 * hours + 0.5 * minutes;
+
+  const angle = Math.abs(hourAngle - minAngle);
+  return Math.min(angle, 360 - angle);
+}
+
+console.log(`Minimum angle between hour & minute hand is : ${givenTime}`);
