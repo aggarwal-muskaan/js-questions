@@ -13,6 +13,7 @@ function twoSum(array, target) {
 const ans = twoSum([1, 5, 4, 8, 9], 13);
 console.log(ans); // [1,3]
 
+/** LINEAR APPROACH - 2 */
 const twoSumUsingHash = (array, target) => {
   const hashtable = {};
   for (let i = 0; i < array.length; i++) {
@@ -20,7 +21,7 @@ const twoSumUsingHash = (array, target) => {
   }
   for (let j = 0; j < array.length; j++) {
     let complement = target - array[j];
-    // The second condition checks for cases like twoSum([7,7], 14) where the indices of similar elements MUST be different
+
     if (hashtable.hasOwnProperty(complement) && hashtable[complement] !== j) {
       return [hashtable[complement], j];
     }
