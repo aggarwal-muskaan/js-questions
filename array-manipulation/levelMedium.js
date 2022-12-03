@@ -53,18 +53,27 @@ for (let i = 0; i < matrix.length; i++) {
   }
 }
 
-// anticlockwise - rotate column
-for (let i = 0; i < matrix.length; i++) {
-  let k = matrix[0].length - 1;
-  for (let j = 0; j < k; j++) {
-    [matrix[j][i], matrix[k][i]] = [matrix[k][i], matrix[j][i]];
-    k--;
-  }
-}
+// ! anticlockwise - rotate column
+// for (let i = 0; i < matrix.length; i++) {
+//   let k = matrix[0].length - 1;
+//   for (let j = 0; j < k; j++) {
+//     [matrix[j][i], matrix[k][i]] = [matrix[k][i], matrix[j][i]];
+//     k--;
+//   }
+// }
 
 // Q3. Primes upto N
 
-// Q4.
+// Q4. Number of occurrence of each character in an array
+
+const randomArray = ["a", "p", "p", "r", "o", "a", "c", "h"];
+
+const occurrence = randomArray.reduce((prev, curr) => {
+  prev[curr] = prev[curr] ? ++prev[curr] : 1;
+  return prev;
+}, {});
+// output: {a: 2, p: 2, r: 1, o: 1, c: 1, h: 1 }
+console.log(occurrence);
 
 // Q5. Two sum - Given an array A and an integer target, find the indices of the two numbers in the array whose sum is equal to the given target.
 
