@@ -64,10 +64,30 @@ for (let i = 0; i < matrix.length; i++) {
 
 // Q3. Primes upto N
 
+const primesUpto = (num) => {
+  function isPrime(input) {
+    let init = 2;
+    while (init <= input / 2) {
+      if (input % init === 0) return false;
+      else init++;
+    }
+    return true;
+  }
+
+  if (num < 2) return [];
+
+  let array = [];
+  for (let i = 2; i <= num; i++) {
+    if (isPrime(i)) array.push(i);
+  }
+  return array;
+};
+
+console.log(primesUpto(54));
+
 // Q4. Number of occurrence of each character in an array
 
 const randomArray = ["a", "p", "p", "r", "o", "a", "c", "h"];
-
 const occurrence = randomArray.reduce((prev, curr) => {
   prev[curr] = prev[curr] ? ++prev[curr] : 1;
   return prev;
@@ -75,13 +95,22 @@ const occurrence = randomArray.reduce((prev, curr) => {
 // output: {a: 2, p: 2, r: 1, o: 1, c: 1, h: 1 }
 console.log(occurrence);
 
-// Q5. Two sum - Given an array A and an integer target, find the indices of the two numbers in the array whose sum is equal to the given target.
+// Q5. Kth Largest Element
+const unsortedArray = [2, 4, 3, 6, 1, 3, 3, 6, 5];
+const k = 4;
 
-// Q6. Kth Largest Element
+unsortedArray.sort((a, b) => b - a); // Step1- sort in descending order
+const distinctVal = new Set(unsortedArray); // Step-2 convert to set - remove duplicates
+const distinctArray = Array.from(distinctVal); // Step-3 convert Set object to an Array object & extract Kth element
+console.log(`${k}th Largest Element is : `, distinctArray[k]);
 
-// Q7. Find the angle between hour hand and minute hand of a clock
-// Input : 8:15, output:157.5
-// Input : 12:30, output:165
+/**
+ * 
+ * 
+ Q6. Find the angle between hour hand and minute hand of a clock
+ Input : 8:15, output:157.5 
+ Input : 12:30, output:165
+ */
 
 const givenTime = angleClock(8, 15);
 function angleClock(hours, minutes) {
