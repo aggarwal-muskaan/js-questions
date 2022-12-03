@@ -92,12 +92,16 @@ console.log(mergeSortedArr(halfSorted, secondSplitArr));
 // Q7. Given an array A, find the maximum number of consecutive 1s in the array.
 
 const A = [1, 1, 3, 2, 3, 1, 1, 1];
-let countConsecutive = 0;
+let countConsecutive = 0,
+  result = 0;
 for (let i = 0; i < A.length; i++) {
-  if (A[i] === A[i + 1]) countConsecutive++;
+  if (A[i] === A[i + 1]) {
+    countConsecutive++;
+    result = Math.max(result, countConsecutive);
+  } else countConsecutive = 0;
 }
 
-console.log("consecutive nums - ", countConsecutive);
+console.log("consecutive nums - ", result + 1);
 
 // Q8. Given an unsorted array, find if it can be reordered to form an arithmetic sequence.
 
