@@ -107,8 +107,8 @@ function findPivot(rotatedArray) {
     mid = start + Math.floor((end - start) / 2);
 
   while (start < end) {
-    if (rotatedArray[mid] < rotatedArray[0]) start = mid + 1;
-    else end = mid;
+    if (rotatedArray[mid] < rotatedArray[0]) end = mid;
+    else start = mid + 1;
 
     mid = start + Math.floor((end - start) / 2);
   }
@@ -153,7 +153,7 @@ function decimalPrecision(element, precision, wholeNum) {
   for (let i = 1; i <= precision; i++) {
     point = point / 10;
     for (let j = wholeNum; j * j <= element; j += point) {
-      console.log(solution, j, 0.05 + 0.01);
+      // console.log(solution, j, 0.05 + 0.01);
       solution = j;
     }
   }
