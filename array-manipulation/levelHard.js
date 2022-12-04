@@ -19,7 +19,7 @@ const longestUniqueSubstr = (str) => {
       }
     }
   }
-  //   end index is not included in sunstring()
+  //   end index is not included in substring()
   const longestSubstring = str.substring(start, end + 1);
   console.log(
     "longest substring has length - ",
@@ -35,6 +35,8 @@ longestUniqueSubstr(longString);
 const linearUniqueSubstr = (str) => {
   let resultantLength = 0,
     start = 0,
+    startIndex = 0,
+    endIndex = 0,
     visited = new Map();
 
   for (let end = 0; end < str.length; end++) {
@@ -45,10 +47,16 @@ const linearUniqueSubstr = (str) => {
     visited.set(str[end], end);
     if (end - start + 1 > resultantLength) {
       resultantLength = end - start + 1;
+      (startIndex = start), (endIndex = end);
     }
   }
 
-  console.log("longest substring has length - ", resultantLength);
+  console.log(
+    "longest substring has length - ",
+    resultantLength,
+    ": ",
+    str.substring(startIndex, endIndex + 1)
+  );
 };
 
 linearUniqueSubstr(longString);
