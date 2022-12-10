@@ -47,7 +47,8 @@ const linearUniqueSubstr = (str) => {
     visited.set(str[end], end);
     if (end - start + 1 > resultantLength) {
       resultantLength = end - start + 1;
-      (startIndex = start), (endIndex = end);
+      startIndex = start;
+      endIndex = end;
     }
   }
 
@@ -68,3 +69,39 @@ linearUniqueSubstr(longString);
 /** Q3. Implement clearAllTimeout()
  * clearAllTimeout function would be used to clear all active timers on the page set via setTimeout.
  */
+
+(function (w) {
+  const timerIds = [];
+  const monkeyPatchedTimeout = w.setTimeout;
+
+  w.setTimeout = function (args, delay) {
+    const id = monkeyPatchedTimeout(args, delay);
+
+    timerIds.push(id);
+    return id;
+  };
+
+  w.clearAllTimeout = function clearAllTimeout() {
+    while (timerIds.length) {
+      const deletedId = timerIds.pop();
+      clearTimeout(deletedId);
+    }
+
+    console.log("timerIds", timerIds);
+  };
+})(window);
+
+setTimeout(() => {
+  console.log("first STO");
+}, 1000);
+setTimeout(() => {
+  console.log("second STO");
+}, 2000);
+setTimeout(() => {
+  console.log("third STO");
+}, 3000);
+setTimeout(() => {
+  console.log("fourth STO");
+}, 4000);
+
+clearAllTimeout();
