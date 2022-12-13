@@ -121,10 +121,12 @@ const partition = (arr, start, end) => {
 };
 
 const quickSort = (arr, start, end) => {
-  const partition = partition(arr, start, end);
+  if (start < end) {
+    const pivotIndex = partition(arr, start, end);
 
-  quickSort(arr, start, partition);
-  quickSort(arr, partition + 1, end);
+    quickSort(arr, start, pivotIndex);
+    quickSort(arr, pivotIndex + 1, end);
+  }
 };
 
 const sortUsingQuickAlgo = unsortedArr;
