@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="input1" placeholder="type..." />
+
+    <ul id="list"></ul>
+    <script lang="text/javascript">
+
+      const fruits = [
+        "apple",
+        "bada apple",
+        "chota apple",
+        "apple kate hue",
+        "pineapple",
+      ];
+
+      const debounce = (func, delay) => {
+        let timer;
+
+        return function (...arg) {
+          clearTimeout(timer);
+
+          timer = setTimeout(() => {
+            return func.apply(this, arg);
+          }, delay);
+        };
+      };
+
+      const listContainer = document.getElementById("list");
+
+      const inputEl = document.getElementById("input1");
+
+      function autosuggest(event) {
+        const { value } = event.target;
+
+        listContainer.innerHTML = null;
+
+        const suggestions = fruits.filter((el) => el.startsWith(value));
+
+        suggestions.forEach((el) => {
+          const tag = document.createElement("li");
+          tag.innerHTML = el;
+
+          listContainer.appendChild(tag);
+        });
+      }
+
+      let debouncedAutoSug = debounce(autosuggest, 300);
+
+      inputEl.addEventListener("keyup", debouncedAutoSug);
+    </script>
+  </body>
+</html>
