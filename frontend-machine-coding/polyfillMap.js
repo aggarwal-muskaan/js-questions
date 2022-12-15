@@ -20,4 +20,3 @@ console.table(
   "same alteration using map polyfill -",
   myMap
 );
-a;
