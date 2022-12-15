@@ -18,11 +18,6 @@ const insertionSort = (unsortedArr) => {
     let j = i;
 
     while (unsortedArr[j - 1] > unsortedArr[j] && j >= 0) {
-      /* SWAP */
-      //   let k;
-      //   k = unsortedArr[j - 1];
-      //   unsortedArr[j - 1] = unsortedArr[j];
-      //   unsortedArr[j] = k;
       [unsortedArr[j - 1], unsortedArr[j]] = [
         unsortedArr[j],
         unsortedArr[j - 1],
@@ -40,7 +35,6 @@ insertionSort(sortUsingInsertion);
 function solve(arr, start, mid, end) {
   const arr1 = arr.slice(start, mid + 1);
   const arr2 = arr.slice(mid + 1, end + 1);
-  // console.log(arr1, arr2);
   let i = 0,
     j = 0,
     k = start;
