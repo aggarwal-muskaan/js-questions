@@ -1,22 +1,30 @@
-const testMap = [2, 4, 6, 7, 8];
+const testReduce = [2, 4, 6, 7, 8];
 
-const newPolyfillReduce = testMap.map((el, index) => ({ key: el, index }));
+const newPolyfillReduce = testReduce.reduce((prev, curr) => {
+  return prev + curr;
+}, 0);
 
-Array.prototype.polyfillReduce = function (callback) {
-  let arr = [];
+Array.prototype.myReduce = function (callbackFn, initialValue) {
+  let accumulator = initialValue;
   for (let i = 0; i < this.length; i++) {
-    arr.push(callback(this[i], i, this));
+    if (accumulator !== undefined) {
+      accumulator = callbackFn.call(undefined, accumulator, this[i], i, this);
+    } else {
+      accumulator = this[i];
+    }
   }
-  return arr;
+  return accumulator;
 };
 
-const myMap = testMap.polyfillReduce((el, index) => ({ key: el, index }));
+const myReduce = testReduce.myReduce((prev, curr) => {
+  return prev + curr;
+}, 0);
 
 console.table(
   "original array-",
-  testMap,
+  testReduce,
   "using reduce() -",
   newPolyfillReduce,
   "same alteration using reduce polyfill -",
-  myMap
+  myReduce
 );
