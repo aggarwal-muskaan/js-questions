@@ -62,8 +62,8 @@ const linearUniqueSubstr = (str) => {
 
 linearUniqueSubstr(longString);
 
-/** Q2. Longest Palindromic Substring (LPS)
- * There can be multiple palindromic substrings with the max length. In case of conflict, return the substring that has the smallest starting index
+/**
+ * Q2. How do you check if two rectangles overlap with each other?
  */
 
 /** Q3. Implement clearAllTimeout()
